@@ -38,6 +38,7 @@ describe('posts service', function(){
 
     inject(function($injector){
       posts = $injector.get('posts');
+      users = $injector.get('users');
       $httpBackend = $injector.get('$httpBackend');
     });
 
@@ -55,11 +56,17 @@ describe('posts service', function(){
             expect(posts.data.length).toBe(postsMock.length);
         });
     });
-    xit("should call users.get", function(){
-
+    it("should call users.get", function(){
+        spyOn(users, 'get');
+        posts.get(function(){
+            expect(users.get).toHaveBeenCalled();
+        });
     });
-    xit("should call posts.mapUsers", function(){
-
+    it("should call posts.mapUsers", function(){
+        spyOn(posts, 'mapUsers');
+        posts.get(function(){
+            expect(users.mapUsers).toHaveBeenCalled();
+        });
     });
   });
 
