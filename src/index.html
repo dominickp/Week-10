@@ -14,8 +14,7 @@
         <h2>ListController</h2>
         <ul>
           <li ng-repeat="(index, post) in lc.posts.data">
-            <strong>{{ post.title }}</strong><br>
-            <tt>by {{ post.userName }}</tt>
+            <post title="post.title" username="post.userName"></post>
           </li>
         </ul>
       </div>
