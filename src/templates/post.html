@@ -1,0 +1,8 @@
+<div ng-if="post">
+    <strong>{{ post.title }}</strong>
+    <br>
+    <tt>by {{ post.userName }}</tt>
+    <p ng-if="body">
+        {{ post.body }}
+    </p>
+</div>

@@ -3,7 +3,7 @@ describe('post directive', function(){
     var compile, scope, compiledDirective;
 
     beforeEach(function(){
-        module('directings');
+        module('templates', 'directings'); // Include templates module (karma preprocessor)karma
 
         inject(function($compile, $rootScope){
             compile = $compile;
@@ -15,7 +15,7 @@ describe('post directive', function(){
             userName: "Dominick Peluso"
         };
 
-        var element = angular.element('<post title="post.title" userame="post.userName"></post>');
+        var element = angular.element('<post-display title="post.title" userame="post.userName"></post-display>');
         compiledDirective = compile(element)(scope);
         scope.$digest(); // processes expressions like {{ title }}
 
@@ -25,8 +25,10 @@ describe('post directive', function(){
         var strong = compiledDirective.find('strong');
         expect(strong.text()).toBe(scope.post.title);
     });
+
     it("should have prefixed the username with a 'by '", function(){
         var tt = compiledDirective.find('tt');
         expect(tt.text().substring(0,3)).toBe('by ');
     });
+
 });

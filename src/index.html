@@ -13,10 +13,16 @@
       <div class="well col-md-6" ng-controller="ListController as lc">
         <h2>ListController</h2>
         <ul>
-          <li ng-repeat="(index, post) in lc.posts.data">
-            <post title="post.title" username="post.userName"></post>
+          <li ng-repeat="(index, post) in lc.posts.data" ng-click="lc.display(post)">
+            <post-display post="post"></post-display>
+            <!--<div ng-include="templates/sometemplate.html"></div>-->
           </li>
         </ul>
+      </div>
+
+      <div class="well col-md-6" ng-controller="DisplayController as dc">
+        <h2>DisplayController</h2>
+        <post-display post="dc.posts.current" body="true"></post-display>
       </div>
 
     </div>

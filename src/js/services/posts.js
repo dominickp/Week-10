@@ -2,6 +2,9 @@ angular.module('directings')
 
     .service('posts', ['$http', 'users', function($http, users){
     var svc = this;
+
+        svc.current;
+
     svc.data = [];
     svc.get = function(callback){
         $http.get('http://jsonplaceholder.typicode.com/posts/')
